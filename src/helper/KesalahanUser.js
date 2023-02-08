@@ -9,7 +9,7 @@ const KesalahanUser = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             history.push("/login");
-        }, 1000);
+        }, 10);
         return () => clearTimeout(timer);
     }, []);
     const AlertKesalahanUser = () =>{

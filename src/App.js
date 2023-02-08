@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/user/Dashboard";
 import Navbar from "./components/Navbar";
 import EmailKonfirm from "./helper/EmailKonfirm";
 import EmailKadaluarsa from "./helper/EmailKadaluarsa";

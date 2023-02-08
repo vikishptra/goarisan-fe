@@ -18,7 +18,7 @@ const Dashboard = () => {
  
     const refreshToken = async () => {
         try {
-            const response = await axios.get('http://localhost:8002/refresh-token', {withCredentials:true});
+            const response = await axios.get('http://localhost:8001/refresh-token', {withCredentials:true});
             setToken(response.data.data.access_token);
             const decoded = jwt_decode(response.data.data.access_token);
             setExpire(decoded.exp);
@@ -38,7 +38,7 @@ const Dashboard = () => {
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
         if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:8002/refresh-token', {withCredentials:true});
+            const response = await axios.get('http://localhost:8001/refresh-token', {withCredentials:true});
             config.headers.Authorization = `Bearer ${response.data.data.access_token}`;
             setToken(response.data.data.access_token);
             const decoded = jwt_decode(response.data.data.access_token);
@@ -50,7 +50,7 @@ const Dashboard = () => {
     });
  
     const getUsers = async () => {
-        const response = await axiosJWT.get('http://localhost:8002/api/v1/user/', {
+        const response = await axiosJWT.get('http://localhost:8001/api/v1/user/', {
             headers: {
                 Authorization: `Bearer ${token}`
             },

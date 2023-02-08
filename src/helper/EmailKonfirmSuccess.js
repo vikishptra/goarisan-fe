@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
 import Swal from "sweetalert2";
 import { useHistory } from 'react-router-dom';
 import { useEffect } from "react";
@@ -9,7 +8,7 @@ const EmailKonfirmSuccess = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             history.push("/login");
-        }, 1000);
+        }, 10);
         return () => clearTimeout(timer);
     }, []);
     const AlertEmailKonfirm = () =>{

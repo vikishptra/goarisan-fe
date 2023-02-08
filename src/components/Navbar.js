@@ -9,7 +9,7 @@ const Navbar = () => {
     const logout = async () => {
       try {
         const token = Cookies.get('refresh_token')
-        const response = await axiosJWT.post('http://localhost:8002/logout', {}, {
+        const response = await axiosJWT.post('http://localhost:8001/logout', {}, {
             headers: {
                 Authorization: `Bearer ${token}`
             },

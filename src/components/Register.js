@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
  
 const Register = () => {
     const [name, setName] = useState('');
@@ -15,7 +15,7 @@ const Register = () => {
         const Register = async (e) => {
             e.preventDefault();
             try {
-                const response = await axios.post('http://localhost:8002/register', {
+                const response = await axios.post('http://localhost:8001/register', {
                     name: name,
                     email: email,
                     password: password,
@@ -50,21 +50,21 @@ const Register = () => {
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
                             <form onSubmit={Register} className="box">
-                                <div className="field mt-5">
+                                <div className="field mt-2">
                                     <label className="label">Name</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="Name"
                                             value={name} onChange={(e) => setName(e.target.value)} required />
                                     </div>
                                 </div>
-                                <div className="field mt-5">
+                                <div className="field mt-2">
                                     <label className="label">Email</label>
                                     <div className="controls">
                                         <input type="email" className="input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
 
                                     </div>
                                 </div>
-                                <div className="field mt-5">
+                                <div className="field mt-2">
                                     <label className="label">Password</label>
                                     <div className="controls">
                                         <input type={showPassword ? "text" : "password"} className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} id="pass" required/>
@@ -74,7 +74,7 @@ const Register = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="field mt-5">
+                                <div className="field mt-2">
                                     <label className="label">Confirm Password</label>
                                     <div className="controls">
                                         <input type={showPassword2 ? "text" : "password"} className="input" placeholder="******" value={confirm_password} onChange={(e) => setConfirmPassword(e.target.value)} id="pass" required/>
@@ -84,8 +84,11 @@ const Register = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="field mt-5">
+                                <div className="field mt-2">
                                     <button  className="button is-success is-fullwidth">Register</button>
+                                    <Link to="/Login" style={{ textDecoration: 'none'}} >
+                                        <button className="button is-danger is-fullwidth mt-2">Login</button>
+                                    </Link>
                                 </div>
                             </form>
                         </div>
