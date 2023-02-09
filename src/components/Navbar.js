@@ -1,10 +1,11 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Swal from "sweetalert2";
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
+
     const axiosJWT = axios.create();
     const logout = async () => {
       try {
@@ -25,7 +26,7 @@ const Navbar = () => {
               })
             console.log(message)
         }
-        history.push("/login");
+        navigate("/login");
     } catch (error) {
         if (error.response) {
           Swal.fire({

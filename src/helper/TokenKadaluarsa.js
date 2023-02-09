@@ -1,10 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
-
-const KesalahanUser = () => {
+const TokenKadaluarsa = () => {
     const navigate = useNavigate();
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -12,17 +10,17 @@ const KesalahanUser = () => {
         }, 10);
         return () => clearTimeout(timer);
     }, []);
-    const AlertKesalahanUser = () =>{
+    const AlertEmailKadaluarsa = () =>{
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: `Terjadi kesalahan: Seperti ada yang salah dari anda!`,
+            text: `Terjadi kesalahan: Token sudah kedaluwarsa mohon kirim konfirmasi lagi!`,
            }) 
     }
 
     return (
-        AlertKesalahanUser()
+        AlertEmailKadaluarsa()
     )
 }
  
-export default KesalahanUser
+export default TokenKadaluarsa

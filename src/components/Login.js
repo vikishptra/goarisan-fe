@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useHistory, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -12,10 +13,10 @@ const Login = () => {
     const [konfirmasiEmailPassword, setKonfirmasiEmailPassword] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const history = useHistory();
     const [isOpenEmail, setIsOpenEmail] = React.useState(false);
     const [isOpenNewPassword, setIsOpenNewPassword] = React.useState(false);
 
+    const navigate = useNavigate();
 
     const showModalEmail = () => {
       setIsOpenEmail(true);
@@ -43,7 +44,7 @@ const Login = () => {
                 );
                 const refresh_token = response.data.data.refresh_token;
                 Cookies.set("refresh_token", refresh_token);
-                history.push("/dashboard");
+                navigate("/dashboard");
             } catch (error) {
                 if (error.response) {
                     Swal.fire({
@@ -79,7 +80,7 @@ const Login = () => {
                         text: `Terjadi kesalahan: ${error.response.data.errorMessage}`,
                       }).then(() => {
                         if (error.response.data.errorMessage === "email anda tidak terdaftar pergi untuk daftar akun anda") {
-                            history.push(`/register`)
+                            navigate(`/register`)
                         }
                       });
                 }

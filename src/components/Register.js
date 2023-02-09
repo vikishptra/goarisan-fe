@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useHistory, Link } from "react-router-dom";
- 
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -10,7 +11,7 @@ const Register = () => {
     const [confirm_password, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
-    const history = useHistory();
+    const navigate = useNavigate();
 
         const Register = async (e) => {
             e.preventDefault();
@@ -30,7 +31,7 @@ const Register = () => {
                       })
                     console.log(message)
                 }
-                history.push("/");
+                navigate("/");
             } catch (error) {
                 if (error.response) {
                     Swal.fire({
@@ -86,7 +87,7 @@ const Register = () => {
                                 </div>
                                 <div className="field mt-2">
                                     <button  className="button is-success is-fullwidth">Register</button>
-                                    <Link to="/Login" style={{ textDecoration: 'none'}} >
+                                    <Link to="/login" style={{ textDecoration: 'none'}} >
                                         <button className="button is-danger is-fullwidth mt-2">Login</button>
                                     </Link>
                                 </div>

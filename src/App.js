@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Dashboard from "./components/user/Dashboard";
@@ -7,34 +7,54 @@ import EmailKonfirm from "./helper/EmailKonfirm";
 import EmailKadaluarsa from "./helper/EmailKadaluarsa";
 import KesalahanUser from "./helper/KesalahanUser";
 import EmailKonfirmSuccess from "./helper/EmailKonfirmSuccess";
+import NewPassword from "./components/NewPassword";
+import TokenKadaluarsa from "./helper/TokenKadaluarsa";
  
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
-      <Route path="/emailconfirm">
-          <EmailKonfirm/>
+      <Routes>
+      <Route path="/emailconfirm" element={ <EmailKonfirm/>} />
+      <Route path="/emailkadaluarsa" element={<EmailKadaluarsa/>} />
+      <Route path="/kesalahanuser" element={ <KesalahanUser/>} />
+      <Route path="/emailsuccess" element={ <EmailKonfirmSuccess/>} />
+      <Route  path="/tokenkadaluarsa" element={ <TokenKadaluarsa/>} />
+      <Route path="/new/password" element={   <NewPassword/>} />
+      <Route path="/register" element={   <Register/>} />
+      <Route path="/login" element={   <Login/>} />
+      <Route path="/dashboard" element={<>
+        <Navbar/>
+          <Dashboard/>
+      
+      </>} />
+
+
+      {/*
+        <Route path="">
+      
         </Route>
-        <Route path="/emailkadaluarsa">
-          <EmailKadaluarsa/>
+        <Route path="">
+          
         </Route>
-        <Route path="/kesalahanuser">
-          <KesalahanUser/>
+        <Route >
+          
         </Route>
-        <Route path="/emailsuccess">
-          <EmailKonfirmSuccess/>
+        <Route>
+          
         </Route>
-        <Route path="/register">
-          <Register/>
+        <Route >
+        
+        </Route>
+        <Route >
+        
         </Route>
         <Route path="/login">
-          <Login/>
+        
         </Route>
-        <Route path="/dashboard">
-          <Navbar/>
-          <Dashboard/>
-        </Route>
-      </Switch>
+        <Route >
+         
+        </Route> */}
+      </Routes>
     </BrowserRouter>
   );
 }
