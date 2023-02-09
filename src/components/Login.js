@@ -79,7 +79,7 @@ const Login = () => {
                         text: `Terjadi kesalahan: ${error.response.data.errorMessage}`,
                       }).then(() => {
                         if (error.response.data.errorMessage === "email anda tidak terdaftar pergi untuk daftar akun anda") {
-                            history.push(`/register?${error.response.data.errorMessage}`)
+                            history.push(`/register`)
                         }
                       });
                 }
