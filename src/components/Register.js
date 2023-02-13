@@ -29,9 +29,8 @@ const Register = () => {
                         title: 'Success',
                         text: `${message}`,
                       })
-                    console.log(message)
                 }
-                navigate("/");
+                navigate("/login");
             } catch (error) {
                 if (error.response) {
                     Swal.fire({
